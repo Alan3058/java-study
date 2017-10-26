@@ -4,6 +4,9 @@
 .gradle
 .project
 .settings
+build
+*.iml
+.idea
 
 # Log file
 *.log
