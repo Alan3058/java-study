@@ -67,7 +67,7 @@ public class Example1 {
 					System.out.println(t);
 					lock.notifyAll();
 					try {
-						lock.wait(100);
+						lock.wait(200);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
