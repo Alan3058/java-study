@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <bean class="aop.MyBeanPostProcessor"></bean>
+    <!-- 我们先把BeanFactoryPostProcessor注释掉，不启用,然后查看测试输出结果   -->
+    <bean class="aop.MyBeanFactoryPostProcessor"></bean>
+
+    <bean id="postProcessorBean" class="aop.PostProcessorBean">
+        <property name="username" value="u"></property>
+        <property name="password" value="p"></property>
+    </bean>
+</beans>

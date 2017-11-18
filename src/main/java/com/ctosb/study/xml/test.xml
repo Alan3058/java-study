@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <order>
+        <orderNo>so20140624</orderNo>
+        <customer>轩仔</customer>
+        <telphone>13456782356</telphone>
+        <origin>beijing</origin>
+        <destination>xianggang</destination>
+        <sku>
+            <name>行李箱</name>
+            <weight>20</weight>
+            <lenght>1.5</lenght>
+            <width>1.2</width>
+            <height>0.9</height>
+        </sku>
+        <sku>
+            <name>自行车</name>
+            <weight>25</weight>
+            <lenght>2</lenght>
+            <width>1.5</width>
+            <height>1.2</height>
+        </sku>
+    </order>
+    <order>
+        <orderNo>so20140623</orderNo>
+        <customer>轩仔1</customer>
+        <telphone>13456782356</telphone>
+        <origin>beijing</origin>
+        <destination>xianggang</destination>
+        <sku>
+            <name>行李箱1</name>
+            <weight>20</weight>
+            <lenght>1.5</lenght>
+            <width>1.2</width>
+            <height>0.9</height>
+        </sku>
+        <sku>
+            <name>自行车1</name>
+            <weight>25</weight>
+            <lenght>2</lenght>
+            <width>1.5</width>
+            <height>1.2</height>
+        </sku>
+    </order>
+</root>
