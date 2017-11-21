@@ -1,5 +1,5 @@
 
-package multithread;
+package com.ctosb.study.multithread;
 
 /**
  * 顺序执行线程

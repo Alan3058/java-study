@@ -10,7 +10,7 @@
  * @修改内容:
  */
 
-package multithread;
+package com.ctosb.study.multithread;
 
 /**
  * notify-wait
