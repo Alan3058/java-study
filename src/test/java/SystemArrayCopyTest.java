@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
  * @date 2017/10/31 16:15
  * @see
  */
-public class TestSystemArrayCopy {
+public class SystemArrayCopyTest {
 
 	@Test
 	public void testArrayCopy() {

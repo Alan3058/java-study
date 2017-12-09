@@ -5,7 +5,7 @@ import org.junit.Test;
  * @date 2017/10/30 16:14
  * @see
  */
-public class TestInteger {
+public class IntegerTest {
 
 	/**
 	 * 测试移位

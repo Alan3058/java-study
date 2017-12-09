@@ -1,4 +1,5 @@
-import static org.junit.Assert.*;
+import org.junit.Test;
+import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -8,13 +9,11 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import org.junit.Test;
-
-import sun.misc.Unsafe;
+import static org.junit.Assert.assertEquals;
 
 /*
  * @Project Name: java-study
- * @File Name: TestHashMap.java
+ * @File Name: HashMapTest.java
  * @Package Name:
  * @Date: 2017年10月17日上午11:20:51
  * @Creator: liliangang-1163
@@ -29,7 +28,7 @@ import sun.misc.Unsafe;
  * @date 2017年10月17日上午11:20:51
  * @see
  */
-public class TestHashMap {
+public class HashMapTest {
 
 	@Test
 	public void testHashMap() {
