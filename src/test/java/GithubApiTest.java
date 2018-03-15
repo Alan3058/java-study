@@ -7,6 +7,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 import org.junit.Test;
+import org.pegdown.PegDownProcessor;
 
 import com.alibaba.fastjson.JSON;
 
@@ -24,7 +25,11 @@ public class GithubApiTest {
 				// .addHeader("Authorization", "token 6956af35da1dbf326100sasqwd")
 				.execute().returnContent();
 		System.out.println(content.toString());
-		String contentStr = JSON.parseObject(content.toString()).getString("content");
-		System.out.println(new String(Base64.decodeBase64(contentStr), "UTF-8"));
+		String base64Str = JSON.parseObject(content.toString()).getString("content");
+		String contentStr = new String(Base64.decodeBase64(base64Str), "UTF-8");
+		System.out.println(contentStr);
+		PegDownProcessor markdownProcessor = new PegDownProcessor();
+		String html = markdownProcessor.markdownToHtml(contentStr);
+		System.out.println(html);
 	}
 }

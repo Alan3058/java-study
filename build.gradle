@@ -30,6 +30,8 @@ dependencies {
     compile 'com.alibaba:fastjson:1.1.37'
     compile 'org.htmlparser:htmlparser:2.1'
     compile 'org.apache.httpcomponents:fluent-hc:4.5.5'
+    compile 'org.pegdown:pegdown:1.6.0'
+
 
     // Xml数据导出导入
     compile 'com.thoughtworks.xstream:xstream:1.4.4'
