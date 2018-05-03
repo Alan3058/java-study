@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.ctosb.html2markdown.Html2Md;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.apache.commons.io.FileUtils;
@@ -45,8 +46,8 @@ public class ZoneMigrate {
 	public void migrate() throws SQLException {
 		String format = "yyyy-MM-dd";
 		QueryRunner runner = new QueryRunner();
-		String sql = "SELECT a.TITLE,REPLACE(a.KEYWORD,\";\",\",\") as KEYWORD,b.CONTENT,GROUP_CONCAT(d.`NAME`) as SECTIONNAME,a.CREATE_TIME FROM article a, article_content b, article_section c,section d WHERE a.ID = b.ARTICLE_ID and b.ARTICLE_ID = c.article_id and c.section_id = d.id and "
-				+ "c.article_id in (SELECT tt.article_id from article_section tt where tt.section_id != 22291312279552) group by a.title,b.CONTENT,A.CREATE_TIME";
+		String sql = "SELECT a.id,a.TITLE,REPLACE(a.KEYWORD,\";\",\",\") as KEYWORD,b.CONTENT,GROUP_CONCAT(d.`NAME`) as SECTIONNAME,a.CREATE_TIME FROM article a, article_content b, article_section c,section d WHERE a.ID = b.ARTICLE_ID and b.ARTICLE_ID = c.article_id and c.section_id = d.id "
+				+ " and c.article_id not in (SELECT tt.article_id from article_section tt where tt.section_id in (22291312279552,22295506583552,22341652316160,19998801309728768)) group by a.title,b.CONTENT,A.CREATE_TIME";
 		List<Map<String, Object>> result = runner.query(conn, sql, new MapListHandler());
 		result.stream().forEach(t -> {
 			try {
@@ -59,9 +60,10 @@ public class ZoneMigrate {
 				content.append("title: [" + t.get("TITLE") + "]" + separator);
 				content.append("categories: [" + t.get("SECTIONNAME") + "]" + separator);
 				content.append("tags: [" + t.get("KEYWORD") + "]" + separator);
+				content.append("id: [" + t.get("ID") + "]" + separator);
 				content.append("fullview: false" + separator);
 				content.append("---" + separator);
-//				content.append(HTML2Md.convertHtml((String) t.get("CONTENT"), "UTF-8") + separator);
+				content.append(Html2Md.convertHtml((String) t.get("CONTENT"), "UTF-8") + separator);
 				FileUtils.writeStringToFile(new File(filename), content.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
