@@ -64,6 +64,7 @@ dependencies {
     compile 'org.rxtx:rxtx:2.1.7'
 
     implementation 'com.google.guava:guava:21.0'
+    implementation 'com.ctosb:jhtml2md:1.0-SNAPSHOT'
 
     implementation 'junit:junit:4.12'
 }
