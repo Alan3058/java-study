@@ -1,0 +1,15 @@
+@startuml
+
+interface Settings
+interface Project
+interface Gradle
+interface TaskContainer
+interface Task
+interface Action
+
+Project --> Gradle
+Project --> TaskContainer
+TaskContainer --> Task
+Task --> Action
+
+@enduml
