@@ -1,3 +1,5 @@
+package com.ctosb.study;
+
 import java.io.IOException;
 
 import org.apache.commons.codec.binary.Base64;
