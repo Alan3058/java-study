@@ -1,0 +1,7 @@
+group 'java.study'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply from "../build.gradle"
+
+sourceCompatibility = 1.8
