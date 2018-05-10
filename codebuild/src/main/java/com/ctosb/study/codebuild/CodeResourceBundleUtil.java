@@ -5,8 +5,8 @@ import java.util.ResourceBundle;
 
 public class CodeResourceBundleUtil {
 
-    private static ResourceBundle resourceBundleJdbc = ResourceBundle.getBundle("com/ctosb/study/codebuild/template/config/template_jdbc");
-    private static ResourceBundle resourceBundleConfig = ResourceBundle.getBundle("com/ctosb/study/codebuild/template/config/template_config");
+    private static ResourceBundle resourceBundleJdbc = ResourceBundle.getBundle("config/template_jdbc");
+    private static ResourceBundle resourceBundleConfig = ResourceBundle.getBundle("config/template_config");
 
     /**
      * 数据库驱动
