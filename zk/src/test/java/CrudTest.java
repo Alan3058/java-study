@@ -19,11 +19,12 @@ import java.util.List;
 public class CrudTest {
 
 	CuratorFramework client;
-	int timeout = 10000;
+	String connection = "192.168.10.44:2182";
+	int timeout = 5000;
 
 	@Before
 	public void before() {
-		client = CuratorFrameworkFactory.builder().connectString("127.0.0.1:2181").retryPolicy(new RetryForever(1000))
+		client = CuratorFrameworkFactory.builder().connectString(connection).retryPolicy(new RetryForever(1000))
 				.connectionTimeoutMs(timeout).sessionTimeoutMs(timeout).build();
 	}
 

@@ -7,5 +7,9 @@ apply from: "../build.gradle"
 sourceCompatibility = 1.8
 
 dependencies {
-    compile 'org.apache.curator:curator-recipes:3.3.0'
+    compile('org.apache.curator:curator-recipes:4.0.0') {
+        exclude group: "org.apache.zookeeper"
+    }
+    compile 'org.apache.zookeeper:zookeeper:3.4.12'
+
 }
