@@ -5,3 +5,8 @@ apply plugin: 'java'
 apply from: "../build.gradle"
 
 sourceCompatibility = 1.8
+
+dependencies {
+    compile 'org.pegdown:pegdown:1.6.0'
+    compile 'com.ctosb:jhtml2md:1.0-SNAPSHOT'
+}
