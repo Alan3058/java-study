@@ -1,0 +1,11 @@
+group 'java.study'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply from: "../build.gradle"
+
+sourceCompatibility = 1.8
+
+dependencies {
+    compile 'org.apache.curator:curator-recipes:3.3.0'
+}
