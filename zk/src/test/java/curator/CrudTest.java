@@ -1,3 +1,5 @@
+package curator;
+
 import java.util.List;
 
 import org.apache.curator.framework.CuratorFramework;
@@ -17,7 +19,7 @@ import org.junit.Test;
 public class CrudTest {
 
 	CuratorFramework client;
-	String connection = "localhost:2181";
+	String connection = "10.41.1.127:2181,10.41.1.25:2181,10.41.1.64:2181";
 	int timeout = 5000;
 
 	@Before
