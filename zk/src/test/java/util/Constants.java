@@ -9,6 +9,6 @@ package util;
  */
 public class Constants {
 
-	public static final String connection = "10.41.1.127:2181";
+	public static final String connection = "localhost:2181";
 	public static final int timeout = 5000;
 }
