@@ -13,6 +13,7 @@ import org.apache.zookeeper.data.ACL;
 import org.apache.zookeeper.data.Stat;
 import org.junit.Before;
 import org.junit.Test;
+import util.Constants;
 
 /**
  * crud test
@@ -23,18 +24,11 @@ import org.junit.Test;
 public class CrudTest {
 
 	ZooKeeper zooKeeper;
-	String connection = "10.41.1.127:2181";
-	int timeout = 5000;
 
 	@Before
 	public void before() throws IOException {
-		zooKeeper = new ZooKeeper(connection, timeout, new Watcher() {
-
-			@Override
-			public void process(WatchedEvent event) {
-				System.out.println("wacher------------" + event.getPath() + event.getType());
-			}
-		});
+		zooKeeper = new ZooKeeper(Constants.connection, Constants.timeout,
+				event -> System.out.println("wacher------------" + event.getPath() + event.getType()));
 	}
 
 	@Test

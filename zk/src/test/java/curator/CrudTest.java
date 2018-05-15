@@ -1,3 +1,4 @@
+
 package curator;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.data.Stat;
 import org.junit.Before;
 import org.junit.Test;
+import util.Constants;
 
 /**
  * crud test
@@ -19,13 +21,12 @@ import org.junit.Test;
 public class CrudTest {
 
 	CuratorFramework client;
-	String connection = "10.41.1.127:2181,10.41.1.25:2181,10.41.1.64:2181";
-	int timeout = 5000;
 
 	@Before
 	public void before() {
-		client = CuratorFrameworkFactory.builder().connectString(connection).retryPolicy(new RetryForever(1000))
-				.connectionTimeoutMs(timeout).sessionTimeoutMs(timeout).build();
+		client = CuratorFrameworkFactory.builder().connectString(Constants.connection)
+				.retryPolicy(new RetryForever(1000)).connectionTimeoutMs(Constants.timeout)
+				.sessionTimeoutMs(Constants.timeout).build();
 	}
 
 	@Test
