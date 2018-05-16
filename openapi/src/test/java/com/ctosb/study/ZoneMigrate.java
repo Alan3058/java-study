@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -108,5 +109,27 @@ public class ZoneMigrate {
 		}
 		String content = fileString.replace(sectionname, sectionname + tags);
 		FileUtils.writeStringToFile(file, content);
+	}
+
+	@Test
+	public void updateResourceUrl() {
+		File dir = new File("E:\\other\\alan3058.github.io\\_posts");
+		File[] files = dir.listFiles();
+		Arrays.stream(files).forEach(file -> {
+			try {
+				String content = FileUtils.readFileToString(file);
+				if (content.contains("http://file.ctosb.com//upload")
+						|| content.contains("http://file.ctosb.com/upload")) {
+					String newContent = content.replace("http://file.ctosb.com//upload", "/assets/resources")
+							.replace("http://file.ctosb.com/upload", "/assets/resources");
+					FileUtils.writeStringToFile(file, newContent);
+				}
+				if(content.contains("upload")){
+					System.out.println(file.getName());
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
 	}
 }
