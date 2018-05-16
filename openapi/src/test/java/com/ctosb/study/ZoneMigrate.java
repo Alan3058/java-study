@@ -11,11 +11,14 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.ctosb.html2markdown.Html2Md;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -119,14 +122,37 @@ public class ZoneMigrate {
 			try {
 				String content = FileUtils.readFileToString(file);
 				if (content.contains("http://file.ctosb.com//upload")
-						|| content.contains("http://file.ctosb.com/upload")) {
+						|| content.contains("http://file.ctosb.com/upload")
+						|| content.contains("http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages")
+						|| content.contains("http://dl2.iteye.com/upload/attachment/0110/4777/6f4513d7-5746-31ee-a2a8-")
+						|| content.contains("http://dl2.iteye.com/upload/attachment/0110/4779/0b97b24f-8a4d-3968-8d8a-")
+						|| content.contains("http://dl2.iteye.com/upload/attachment/0110/4584/ab1b03cc-6f49-339e-a022-")
+						|| content.contains("http://dl2.iteye.com/upload/attachment/0110/5279/13c54fc7-d58f-3199-bc8c-")
+						|| content.contains("http://dl2.iteye.com/upload/attachment/0110/5307/a86d0799-534f-3b9b-b592-")
+						|| content.contains("http://dl2.iteye.com/upload/attachment/0110/4599/6659a319-f878-3b7d-bf3a-")
+						|| content.contains("http://dl.iteye.com/topics/download/42903542-fcfc-3c45-8f2c-0dd28d6ccd93")
+						|| content.contains("http://dl.iteye.com/topics/download/fe27332b-e18c-320c-a00b-f77376ebe9db")
+						) {
 					String newContent = content.replace("http://file.ctosb.com//upload", "/assets/resources")
-							.replace("http://file.ctosb.com/upload", "/assets/resources");
+							.replace("http://file.ctosb.com/upload", "/assets/resources")
+							.replace("http://ctosb.com/ueditor/dialogs/attachment/fileTypeImages", "/assets/resources")
+							.replace("http://dl2.iteye.com/upload/attachment/0110/4777/6f4513d7-5746-31ee-a2a8-", "/assets/resources/image/20160201/")
+							.replace("http://dl2.iteye.com/upload/attachment/0110/4779/0b97b24f-8a4d-3968-8d8a-", "/assets/resources/image/20160201/")
+							.replace("http://dl2.iteye.com/upload/attachment/0110/4584/ab1b03cc-6f49-339e-a022-", "/assets/resources/image/20160202/")
+							.replace("http://dl2.iteye.com/upload/attachment/0110/5279/13c54fc7-d58f-3199-bc8c-", "/assets/resources/image/20160203/")
+							.replace("http://dl2.iteye.com/upload/attachment/0110/5307/a86d0799-534f-3b9b-b592-", "/assets/resources/image/20160203/")
+							.replace("http://dl2.iteye.com/upload/attachment/0110/4599/6659a319-f878-3b7d-bf3a-", "/assets/resources/image/20160203/")
+							.replace("http://dl.iteye.com/topics/download/42903542-fcfc-3c45-8f2c-0dd28d6ccd93", "/assets/resources/file/20160202/0dd28d6ccd93.zip")
+							.replace("http://dl.iteye.com/topics/download/fe27332b-e18c-320c-a00b-f77376ebe9db", "/assets/resources/file/20160203/f77376ebe9db.zip")
+							;
 					FileUtils.writeStringToFile(file, newContent);
 				}
-				if(content.contains("upload")){
-					System.out.println(file.getName());
+				Pattern compile = Pattern.compile("\\(http[^)]+\\)");
+				Matcher matcher = compile.matcher(content);
+				while (matcher.find()) {
+					System.out.println(matcher.group(0));
 				}
+				 System.out.println(file.getName());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
