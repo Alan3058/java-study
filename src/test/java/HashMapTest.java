@@ -1,15 +1,17 @@
-import org.junit.Test;
-import sun.misc.Unsafe;
+import static org.junit.Assert.assertEquals;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+import sun.misc.Unsafe;
 
 /*
  * @Project Name: java-study
@@ -49,6 +51,18 @@ public class HashMapTest {
 			// 会生成一个新的迭代器迭代
 			System.out.print(key + " ");
 		}
+	}
+
+	@Test
+	public void testLinkedHashMap() {
+		Map<Integer, Integer> map = new LinkedHashMap<>(6, 0.75f, true);
+		for (int i = 0; i < 10; i++) {
+			Integer pi = i * 16 + 1;
+			map.put(pi, pi);
+		}
+		// 会改变节点顺序
+		map.get(1);
+		map.get(17);
 	}
 
 	@Test
