@@ -27,7 +27,7 @@ dependencies {
     compile 'mysql:mysql-connector-java:5.1.27'
 
     compile 'org.freemarker:freemarker:2.3.20'
-    compile 'org.springframework:spring-context:3.1.1.RELEASE'
+    compile 'org.springframework:spring-context:4.3.12.RELEASE'
 
     compile 'com.alibaba:fastjson:1.1.37'
     compile 'org.htmlparser:htmlparser:2.1'
