@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringCost {
 
-    @Pointcut("execution(public * com.paic.icore.css.rule.console.mapper.*.*(..))")
+    @Pointcut("execution(public * com.ctosb..*.*(..))")
     public void log() {
     }
 
